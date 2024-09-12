@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 
 function App() {
 
-  const [todoData, setTodoDate] = useState( [
+  const [todoData, setTodoData] = useState( [
     {
       id:"1",
       title:"공부하기",
@@ -14,11 +14,28 @@ function App() {
       title:"청소하기",
     }
   ]);
-  
+
+  const [value, setValue] = useState("");
+
   const handleClick = (id) =>{
     let newTodoData = todoData.filter(data => data.id !== id);
     console.log('new', newTodoData);
-    setTodoDate(newTodoData);
+    setTodoData(newTodoData);
+  }
+
+  const handleChange = (e) => {
+    console.log('e',e.target.value);
+    setValue(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let newTodo = {
+      id: Date.now(),
+      title: value,
+    }
+    setTodoData([...todoData, newTodo]);
+    setValue("");
   }
   
   return (
@@ -32,6 +49,19 @@ function App() {
           </div>
         ))}
         
+        <form onSubmit={handleSubmit}>
+          <input 
+            type='text' 
+            name='value'
+            placeholder='text...'
+            value={value}
+            onChange={handleChange}
+          />
+          <input
+            type='submit'
+            value='입력'
+            className='btn'/>
+        </form>
       </div>
       
     </div>

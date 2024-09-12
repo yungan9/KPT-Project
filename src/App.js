@@ -1,27 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react';
+import List from './components/List';
 
 function App() {
 
   const [todoData, setTodoData] = useState( [
-    {
-      id:"1",
-      title:"공부하기",
-    },
-    {
-      id:"2",
-      title:"청소하기",
-    }
+    
   ]);
 
   const [value, setValue] = useState("");
-
-  const handleClick = (id) =>{
-    let newTodoData = todoData.filter(data => data.id !== id);
-    console.log('new', newTodoData);
-    setTodoData(newTodoData);
-  }
 
   const handleChange = (e) => {
     console.log('e',e.target.value);
@@ -42,13 +30,7 @@ function App() {
     <div className='container'>
       <div className='title'>
         <h1>Keep</h1>
-        {todoData.map(data => (
-          <div className='memoBlock' key={data.id}>
-            {data.title}
-            <button onClick={() => handleClick(data.id)}>x</button>
-          </div>
-        ))}
-        
+        <List todoData={todoData} setTodoData={setTodoData}/>
         <form onSubmit={handleSubmit}>
           <input 
             type='text' 

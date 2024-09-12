@@ -1,6 +1,7 @@
 import React from "react";
 import "../style/List.css";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import Memo from "./Memo";
 
 export default function List({ todoData, setTodoData }) {
     const handleDragEnd = (result) => {
@@ -13,11 +14,7 @@ export default function List({ todoData, setTodoData }) {
         setTodoData(newTodoData);
       };
 
-  const handleClick = (id) => {
-    let newTodoData = todoData.filter((data) => data.id !== id);
-    console.log("new", newTodoData);
-    setTodoData(newTodoData);
-  };
+
 
   return (
     <div>
@@ -32,10 +29,15 @@ export default function List({ todoData, setTodoData }) {
                   index={index}
                 >
                   {(provided,snapshot) => (
-                    <div className="memoBlock" key={data.id} {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
-                      {data.title}
-                      <button onClick={() => handleClick(data.id)}>x</button>
-                    </div>
+                    <Memo 
+                        key={data.id}
+                        id={data.id}
+                        title={data.title}
+                        todoData={todoData}
+                        setTodoData={setTodoData}
+                        provided={provided}
+                        snapshot={snapshot}
+                    />
                   )}
                 </Draggable>
               ))}

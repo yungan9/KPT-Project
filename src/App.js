@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react';
 import List from './components/List';
+import Form from './components/Form';
 
 function App() {
 
@@ -11,10 +12,6 @@ function App() {
 
   const [value, setValue] = useState("");
 
-  const handleChange = (e) => {
-    console.log('e',e.target.value);
-    setValue(e.target.value);
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,19 +28,7 @@ function App() {
       <div className='title'>
         <h1>Keep</h1>
         <List todoData={todoData} setTodoData={setTodoData}/>
-        <form onSubmit={handleSubmit}>
-          <input 
-            type='text' 
-            name='value'
-            placeholder='text...'
-            value={value}
-            onChange={handleChange}
-          />
-          <input
-            type='submit'
-            value='입력'
-            className='btn'/>
-        </form>
+        <Form value={value} setValue={setValue} handleSubmit={handleSubmit}/>
       </div>
       
     </div>

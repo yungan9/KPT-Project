@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../style/List.css";
 
 export default function Memo({
   id,
@@ -39,8 +40,8 @@ export default function Memo({
         <div className="memoBlock">
           <form onSubmit={handleSubmit}>
             <input value={edited} onChange={handleEditChange} />
-            <button type="submit">save</button>
-            <button onClick={(handleSubmit) => setIsEditing(false)}>x</button>
+            <button className="submit" type="submit">save</button>
+            <button className="delete" onClick={(handleSubmit) => setIsEditing(false)}>x</button>
           </form>
         </div>
       </div>
@@ -56,8 +57,8 @@ export default function Memo({
           {...provided.dragHandleProps}
         >
           {title}
-          <button onClick={() => setIsEditing(true)}>edit</button>
-          <button onClick={() => handleClick(id)}>x</button>
+          <button className="submit" onClick={() => setIsEditing(true)}>edit</button>
+          <button className="delete" onClick={() => handleClick(id)}>x</button>
         </div>
       </div>
     );

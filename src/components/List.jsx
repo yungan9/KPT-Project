@@ -1,5 +1,4 @@
 import React from "react";
-import "../style/List.css";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import Memo from "./Memo";
 

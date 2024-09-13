@@ -4,12 +4,18 @@ import Section from './components/Section';
 
 
 function App() {
-
-  
-  
   return (
     <div>
-      <Section/>
+      <div className="container">
+        <div className='wrapper'>
+          `<Section part="Keep"/>
+          <Section part="Practice"/>`
+        </div>
+        <div className='wrapper'>
+          <Section part="Try"/>
+          <Section part="Takeaway"/>
+        </div>
+      </div>
     </div>
   );
 }

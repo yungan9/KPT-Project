@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import List from "../components/List";
 import Form from "../components/Form";
 
-export default function Section() {
+export default function Section({part}) {
   const [todoData, setTodoData] = useState([]);
 
   const [value, setValue] = useState("");
@@ -19,13 +19,11 @@ export default function Section() {
 
   return (
     <div>
-      <div className="container">
         <div className="title">
-          <h1>Keep</h1>
-          <List todoData={todoData} setTodoData={setTodoData} />
+          <h1>{part}</h1>
           <Form value={value} setValue={setValue} handleSubmit={handleSubmit} />
+          <List todoData={todoData} setTodoData={setTodoData} />
         </div>
-      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import List from "../components/List";
 import Form from "../components/Form";
+import "../style/List.css";
 
 export default function Section({part}) {
   const [todoData, setTodoData] = useState([]);
@@ -22,7 +23,9 @@ export default function Section({part}) {
         <div className="title">
           <h1>{part}</h1>
           <Form value={value} setValue={setValue} handleSubmit={handleSubmit} />
-          <List todoData={todoData} setTodoData={setTodoData} />
+          <div className="board">
+            <List todoData={todoData} setTodoData={setTodoData} />
+          </div>
         </div>
     </div>
   );
